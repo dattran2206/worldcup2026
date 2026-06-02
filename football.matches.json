@@ -54,7 +54,7 @@
     "matchday": "1",
     "local_date": "06/12/2026 15:00",
     "persian_date": "1405-03-22 15:00",
-    "stadium_id": "3",
+    "stadium_id": "12",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -74,7 +74,7 @@
     "matchday": "1",
     "local_date": "06/12/2026 18:00",
     "persian_date": "1405-03-22 18:00",
-    "stadium_id": "4",
+    "stadium_id": "16",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -94,7 +94,7 @@
     "matchday": "1",
     "local_date": "06/13/2026 21:00",
     "persian_date": "1405-03-23 21:00",
-    "stadium_id": "5",
+    "stadium_id": "9",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -114,7 +114,7 @@
     "matchday": "1",
     "local_date": "06/13/2026 12:00",
     "persian_date": "1405-03-23 12:00",
-    "stadium_id": "6",
+    "stadium_id": "13",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -134,7 +134,7 @@
     "matchday": "1",
     "local_date": "06/13/2026 18:00",
     "persian_date": "1405-03-23 18:00",
-    "stadium_id": "7",
+    "stadium_id": "11",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -154,7 +154,7 @@
     "matchday": "1",
     "local_date": "06/13/2026 12:00",
     "persian_date": "1405-03-23 12:00",
-    "stadium_id": "8",
+    "stadium_id": "15",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -174,7 +174,7 @@
     "matchday": "1",
     "local_date": "06/14/2026 18:00",
     "persian_date": "1405-03-24 18:00",
-    "stadium_id": "9",
+    "stadium_id": "10",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -194,7 +194,7 @@
     "matchday": "1",
     "local_date": "06/14/2026 12:00",
     "persian_date": "1405-03-24 12:00",
-    "stadium_id": "10",
+    "stadium_id": "5",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -214,7 +214,7 @@
     "matchday": "1",
     "local_date": "06/14/2026 15:00",
     "persian_date": "1405-03-24 15:00",
-    "stadium_id": "11",
+    "stadium_id": "4",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -234,7 +234,7 @@
     "matchday": "1",
     "local_date": "06/14/2026 21:00",
     "persian_date": "1405-03-24 21:00",
-    "stadium_id": "12",
+    "stadium_id": "3",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -254,7 +254,7 @@
     "matchday": "1",
     "local_date": "06/15/2026 18:00",
     "persian_date": "1405-03-25 18:00",
-    "stadium_id": "13",
+    "stadium_id": "16",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -274,7 +274,7 @@
     "matchday": "1",
     "local_date": "06/15/2026 12:00",
     "persian_date": "1405-03-25 12:00",
-    "stadium_id": "14",
+    "stadium_id": "7",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -294,7 +294,7 @@
     "matchday": "1",
     "local_date": "06/15/2026 15:00",
     "persian_date": "1405-03-25 15:00",
-    "stadium_id": "15",
+    "stadium_id": "14",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -314,7 +314,7 @@
     "matchday": "1",
     "local_date": "06/15/2026 21:00",
     "persian_date": "1405-03-25 21:00",
-    "stadium_id": "16",
+    "stadium_id": "8",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -334,7 +334,7 @@
     "matchday": "1",
     "local_date": "06/16/2026 15:00",
     "persian_date": "1405-03-26 15:00",
-    "stadium_id": "1",
+    "stadium_id": "11",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -354,7 +354,7 @@
     "matchday": "1",
     "local_date": "06/16/2026 18:00",
     "persian_date": "1405-03-26 18:00",
-    "stadium_id": "2",
+    "stadium_id": "9",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -374,7 +374,7 @@
     "matchday": "1",
     "local_date": "06/16/2026 20:00",
     "persian_date": "1405-03-26 20:00",
-    "stadium_id": "3",
+    "stadium_id": "6",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -394,7 +394,7 @@
     "matchday": "1",
     "local_date": "06/16/2026 12:00",
     "persian_date": "1405-03-26 12:00",
-    "stadium_id": "4",
+    "stadium_id": "15",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -434,7 +434,7 @@
     "matchday": "1",
     "local_date": "06/17/2026 15:00",
     "persian_date": "1405-03-27 15:00",
-    "stadium_id": "6",
+    "stadium_id": "4",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -454,7 +454,7 @@
     "matchday": "1",
     "local_date": "06/17/2026 18:00",
     "persian_date": "1405-03-27 18:00",
-    "stadium_id": "7",
+    "stadium_id": "1",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -474,7 +474,7 @@
     "matchday": "1",
     "local_date": "06/17/2026 21:00",
     "persian_date": "1405-03-27 21:00",
-    "stadium_id": "8",
+    "stadium_id": "12",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -494,7 +494,7 @@
     "matchday": "2",
     "local_date": "06/18/2026 13:00",
     "persian_date": "1405-03-28 13:00",
-    "stadium_id": "9",
+    "stadium_id": "2",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -514,7 +514,7 @@
     "matchday": "2",
     "local_date": "06/18/2026 12:00",
     "persian_date": "1405-03-28 12:00",
-    "stadium_id": "10",
+    "stadium_id": "16",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -534,7 +534,7 @@
     "matchday": "2",
     "local_date": "06/18/2026 15:00",
     "persian_date": "1405-03-28 15:00",
-    "stadium_id": "11",
+    "stadium_id": "13",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -554,7 +554,7 @@
     "matchday": "2",
     "local_date": "06/18/2026 18:00",
     "persian_date": "1405-03-28 18:00",
-    "stadium_id": "12",
+    "stadium_id": "7",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -571,7 +571,7 @@
     "home_scorers": "null",
     "away_scorers": "null",
     "group": "C",
-    "matchday": "2",
+    "matchday": "10",
     "local_date": "06/19/2026 21:00",
     "persian_date": "1405-03-29 21:00",
     "stadium_id": "13",
@@ -594,7 +594,7 @@
     "matchday": "2",
     "local_date": "06/19/2026 18:00",
     "persian_date": "1405-03-29 18:00",
-    "stadium_id": "14",
+    "stadium_id": "9",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -614,7 +614,7 @@
     "matchday": "2",
     "local_date": "06/19/2026 12:00",
     "persian_date": "1405-03-29 12:00",
-    "stadium_id": "15",
+    "stadium_id": "14",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -634,7 +634,7 @@
     "matchday": "2",
     "local_date": "06/19/2026 15:00",
     "persian_date": "1405-03-29 15:00",
-    "stadium_id": "16",
+    "stadium_id": "15",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -654,7 +654,7 @@
     "matchday": "2",
     "local_date": "06/20/2026 19:00",
     "persian_date": "1405-03-30 19:00",
-    "stadium_id": "1",
+    "stadium_id": "12",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -674,7 +674,7 @@
     "matchday": "2",
     "local_date": "06/20/2026 19:00",
     "persian_date": "1405-03-30 19:00",
-    "stadium_id": "2",
+    "stadium_id": "6",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -694,7 +694,7 @@
     "matchday": "2",
     "local_date": "06/20/2026 12:00",
     "persian_date": "1405-03-30 12:00",
-    "stadium_id": "3",
+    "stadium_id": "5",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -714,7 +714,7 @@
     "matchday": "2",
     "local_date": "06/20/2026 15:00",
     "persian_date": "1405-03-30 15:00",
-    "stadium_id": "4",
+    "stadium_id": "3",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -734,7 +734,7 @@
     "matchday": "2",
     "local_date": "06/21/2026 15:00",
     "persian_date": "1405-03-31 15:00",
-    "stadium_id": "5",
+    "stadium_id": "16",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -754,7 +754,7 @@
     "matchday": "2",
     "local_date": "06/21/2026 12:00",
     "persian_date": "1405-03-31 12:00",
-    "stadium_id": "6",
+    "stadium_id": "13",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -814,7 +814,7 @@
     "matchday": "2",
     "local_date": "06/22/2026 17:00",
     "persian_date": "1405-04-01 17:00",
-    "stadium_id": "9",
+    "stadium_id": "10",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -834,7 +834,7 @@
     "matchday": "2",
     "local_date": "06/22/2026 14:00",
     "persian_date": "1405-04-01 14:00",
-    "stadium_id": "10",
+    "stadium_id": "11",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -854,7 +854,7 @@
     "matchday": "2",
     "local_date": "06/22/2026 20:00",
     "persian_date": "1405-04-01 20:00",
-    "stadium_id": "11",
+    "stadium_id": "4",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -874,7 +874,7 @@
     "matchday": "2",
     "local_date": "06/22/2026 11:00",
     "persian_date": "1405-04-01 11:00",
-    "stadium_id": "12",
+    "stadium_id": "15",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -894,7 +894,7 @@
     "matchday": "2",
     "local_date": "06/23/2026 15:00",
     "persian_date": "1405-04-02 15:00",
-    "stadium_id": "13",
+    "stadium_id": "5",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -914,7 +914,7 @@
     "matchday": "2",
     "local_date": "06/23/2026 19:00",
     "persian_date": "1405-04-02 19:00",
-    "stadium_id": "14",
+    "stadium_id": "12",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -934,7 +934,7 @@
     "matchday": "2",
     "local_date": "06/23/2026 12:00",
     "persian_date": "1405-04-02 12:00",
-    "stadium_id": "15",
+    "stadium_id": "2",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -954,7 +954,7 @@
     "matchday": "2",
     "local_date": "06/23/2026 21:00",
     "persian_date": "1405-04-02 21:00",
-    "stadium_id": "16",
+    "stadium_id": "9",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -974,7 +974,7 @@
     "matchday": "3",
     "local_date": "06/24/2026 18:00",
     "persian_date": "1405-04-03 18:00",
-    "stadium_id": "1",
+    "stadium_id": "8",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -994,7 +994,7 @@
     "matchday": "3",
     "local_date": "06/24/2026 18:00",
     "persian_date": "1405-04-03 18:00",
-    "stadium_id": "2",
+    "stadium_id": "7",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1034,7 +1034,7 @@
     "matchday": "3",
     "local_date": "06/24/2026 19:00",
     "persian_date": "1405-04-03 19:00",
-    "stadium_id": "4",
+    "stadium_id": "1",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1054,7 +1054,7 @@
     "matchday": "3",
     "local_date": "06/25/2026 18:00",
     "persian_date": "1405-04-04 18:00",
-    "stadium_id": "5",
+    "stadium_id": "14",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1074,7 +1074,7 @@
     "matchday": "3",
     "local_date": "06/25/2026 18:00",
     "persian_date": "1405-04-04 18:00",
-    "stadium_id": "6",
+    "stadium_id": "13",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1094,7 +1094,7 @@
     "matchday": "3",
     "local_date": "06/25/2026 16:00",
     "persian_date": "1405-04-04 16:00",
-    "stadium_id": "7",
+    "stadium_id": "10",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1114,7 +1114,7 @@
     "matchday": "3",
     "local_date": "06/25/2026 16:00",
     "persian_date": "1405-04-04 16:00",
-    "stadium_id": "8",
+    "stadium_id": "11",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1134,7 +1134,7 @@
     "matchday": "3",
     "local_date": "06/25/2026 19:00",
     "persian_date": "1405-04-04 19:00",
-    "stadium_id": "9",
+    "stadium_id": "15",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1154,7 +1154,7 @@
     "matchday": "3",
     "local_date": "06/25/2026 19:00",
     "persian_date": "1405-04-04 19:00",
-    "stadium_id": "10",
+    "stadium_id": "16",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1174,7 +1174,7 @@
     "matchday": "3",
     "local_date": "06/26/2026 18:00",
     "persian_date": "1405-04-05 18:00",
-    "stadium_id": "11",
+    "stadium_id": "4",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1194,7 +1194,7 @@
     "matchday": "3",
     "local_date": "06/26/2026 18:00",
     "persian_date": "1405-04-05 18:00",
-    "stadium_id": "12",
+    "stadium_id": "6",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1214,7 +1214,7 @@
     "matchday": "3",
     "local_date": "06/26/2026 15:00",
     "persian_date": "1405-04-05 15:00",
-    "stadium_id": "13",
+    "stadium_id": "12",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1234,7 +1234,7 @@
     "matchday": "3",
     "local_date": "06/26/2026 15:00",
     "persian_date": "1405-04-05 15:00",
-    "stadium_id": "14",
+    "stadium_id": "9",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1254,7 +1254,7 @@
     "matchday": "3",
     "local_date": "06/26/2026 20:00",
     "persian_date": "1405-04-05 20:00",
-    "stadium_id": "15",
+    "stadium_id": "14",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1274,7 +1274,7 @@
     "matchday": "3",
     "local_date": "06/26/2026 20:00",
     "persian_date": "1405-04-05 20:00",
-    "stadium_id": "16",
+    "stadium_id": "13",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1294,7 +1294,7 @@
     "matchday": "3",
     "local_date": "06/27/2026 17:00",
     "persian_date": "1405-04-06 17:00",
-    "stadium_id": "1",
+    "stadium_id": "5",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1334,7 +1334,7 @@
     "matchday": "3",
     "local_date": "06/27/2026 17:00",
     "persian_date": "1405-04-06 17:00",
-    "stadium_id": "3",
+    "stadium_id": "11",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1354,7 +1354,7 @@
     "matchday": "3",
     "local_date": "06/27/2026 17:00",
     "persian_date": "1405-04-06 17:00",
-    "stadium_id": "4",
+    "stadium_id": "10",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1374,7 +1374,7 @@
     "matchday": "3",
     "local_date": "06/27/2026 20:00",
     "persian_date": "1405-04-06 20:00",
-    "stadium_id": "5",
+    "stadium_id": "6",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1394,7 +1394,7 @@
     "matchday": "3",
     "local_date": "06/27/2026 20:00",
     "persian_date": "1405-04-06 20:00",
-    "stadium_id": "6",
+    "stadium_id": "4",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1414,7 +1414,7 @@
     "matchday": "3",
     "local_date": "06/27/2026 19:30",
     "persian_date": "1405-04-06 19:30",
-    "stadium_id": "7",
+    "stadium_id": "8",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
@@ -1434,7 +1434,7 @@
     "matchday": "3",
     "local_date": "06/27/2026 19:30",
     "persian_date": "1405-04-06 19:30",
-    "stadium_id": "8",
+    "stadium_id": "7",
     "finished": "FALSE",
     "time_elapsed": "notstarted",
     "type": "group"
