@@ -819,7 +819,6 @@ This project is licensed under the ISC License — see the [LICENSE](LICENSE) fi
 
 This API is completely **free and open-source**. If you find it useful, consider supporting its development:
 
-<a href="https://buymeacoffee.com/rahiminia" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50"></a>
 
 ### 💰 Donate with USDT
 
