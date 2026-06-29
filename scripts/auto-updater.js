@@ -20,12 +20,15 @@
  *   - data/team-name-map.json (Persian → English team names)
  */
 
+require("dotenv").config();
 const { MongoClient } = require("mongodb");
 const fs = require("fs");
 const path = require("path");
+const { advanceRoundOf32Winners } = require("../services/knockoutBracket");
 
-const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017";
-const DB_NAME = process.env.DB_NAME || "football";
+const MONGO_URI = process.env.MONGO_URI || process.env.MONGODB_URL || "mongodb://127.0.0.1:27017/worldcup2026";
+const DB_NAME = process.env.DB_NAME || undefined;
+const MATCH_COLLECTION = process.env.MATCH_COLLECTION || "games";
 const POLL_INTERVAL = parseInt(process.env.POLL_INTERVAL || "3000");
 
 // Load mappings
@@ -100,7 +103,7 @@ async function syncMatches(v3Matches, db) {
     if (team) teamByFa[fa] = team.id;
   }
 
-  const matches = db.collection("matches");
+  const matches = db.collection(MATCH_COLLECTION);
   let updated = 0;
 
   for (const m of v3Matches) {
@@ -108,7 +111,11 @@ async function syncMatches(v3Matches, db) {
     const awayTeamId = teamByFa[m.guest?.name];
     if (!homeTeamId || !awayTeamId) continue;
 
-    const match = await matches.findOne({ home_team_id: homeTeamId, away_team_id: awayTeamId });
+    const match = await matches.findOne({
+      home_team_id: homeTeamId,
+      away_team_id: awayTeamId,
+      finished: { $nin: ["TRUE", true] }
+    }, { sort: { date: -1 } });
     if (!match) continue;
 
     const newData = {
@@ -117,6 +124,9 @@ async function syncMatches(v3Matches, db) {
       time_elapsed: mapStatus(m.status, m.liveTime, m.isLive),
       finished: m.status === 7 ? "TRUE" : match.finished,
     };
+    if (m.status === 7 && (m.winner === 0 || m.winner === 1)) {
+      newData.winner_team_id = m.winner === 0 ? homeTeamId : awayTeamId;
+    }
 
     if (m.isLive || m.status === 7) {
       const scorers = await fetchEvents(m.id);
@@ -137,7 +147,7 @@ async function syncMatches(v3Matches, db) {
 }
 
 async function updateStandings(db) {
-  const matches = await db.collection("matches").find({ finished: "TRUE", type: "group" }).toArray();
+  const matches = await db.collection(MATCH_COLLECTION).find({ finished: "TRUE", type: "group" }).toArray();
   const teams = await db.collection("teams").find({}).toArray();
 
   const stats = {};
@@ -183,14 +193,16 @@ async function fullSync() {
   const client = new MongoClient(MONGO_URI);
   try {
     await client.connect();
-    const db = client.db(DB_NAME);
+    const db = DB_NAME ? client.db(DB_NAME) : client.db();
     const allMatches = [];
     for (const d of [-2, -1, 0, 1]) {
       try { allMatches.push(...await fetchVarzesh3(d)); } catch {}
     }
     const updated = await syncMatches(allMatches, db);
+    const advancements = await advanceRoundOf32Winners(db, MATCH_COLLECTION);
     await updateStandings(db);
-    console.log(`[auto-updater] Full sync done: ${updated} matches updated, standings recalculated`);
+    const advanced = advancements.filter(result => result.advanced).length;
+    console.log(`[auto-updater] Full sync done: ${updated} matches updated, ${advanced} R32 winners advanced, standings recalculated`);
   } finally { await client.close(); }
 }
 
@@ -199,12 +211,18 @@ async function poll() {
   const client = new MongoClient(MONGO_URI);
   try {
     await client.connect();
-    const db = client.db(DB_NAME);
+    const db = DB_NAME ? client.db(DB_NAME) : client.db();
     const todayMatches = await fetchVarzesh3(0);
     await syncMatches(todayMatches, db);
+    const advancements = await advanceRoundOf32Winners(db, MATCH_COLLECTION);
+    for (const result of advancements) {
+      if (result.advanced) {
+        console.log(`[auto-updater] Team ${result.winnerTeamId} advanced to match ${result.nextMatchId}`);
+      }
+    }
 
     // Recalculate standings if a match just finished
-    const count = await db.collection("matches").countDocuments({ finished: "TRUE" });
+    const count = await db.collection(MATCH_COLLECTION).countDocuments({ finished: "TRUE" });
     if (count !== lastFinishedCount) {
       lastFinishedCount = count;
       await updateStandings(db);

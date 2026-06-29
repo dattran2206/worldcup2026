@@ -14,6 +14,7 @@
     "import:teams": "node import-teams.js",
     "import:stadiums": "node import-stadiums.js",
     "import:matches": "node import-matches.js",
+    "test": "node test/knockoutBracket.test.js",
     "test:load": "node load-test.js"
   },
   "keywords": [
@@ -63,6 +64,7 @@
     "helmet": "^8.1.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.5",
+    "mongodb": "^4.2.2",
     "morgan": "^1.10.0",
     "path": "^0.12.7",
     "swagger-jsdoc": "^6.2.8",

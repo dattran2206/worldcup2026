@@ -8,6 +8,7 @@ Automatically fetches **real-time match data** from [Varzesh3](https://www.varze
 - ⚽ **Goal scorers** with English names (114+ players mapped)
 - 🟡 **Penalty goals** detected and marked with `(p)`
 - 📊 **Group standings** auto-calculated after each match finishes
+- 🏆 **Knockout progression** — round-of-32 winners automatically fill the correct round-of-16 match
 - 🌐 **Persian → English** team and player name translation
 - 🔄 **Self-healing** — unknown players saved for later manual mapping
 
@@ -46,8 +47,9 @@ pm2 start scripts/auto-updater.js --name wc-updater
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `MONGO_URI` | `mongodb://127.0.0.1:27017` | MongoDB connection string |
-| `DB_NAME` | `football` | Database name |
+| `MONGO_URI` | Value of `MONGODB_URL`, then `mongodb://127.0.0.1:27017/worldcup2026` | Optional updater-specific MongoDB connection string |
+| `DB_NAME` | Database from the connection string | Optional database override |
+| `MATCH_COLLECTION` | `games` | Match collection name |
 | `POLL_INTERVAL` | `3000` | Polling interval in ms |
 
 ## Player Names

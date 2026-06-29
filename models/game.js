@@ -22,6 +22,18 @@ const GameSchema = new mongoose.Schema({
         type: String,
         default: "0"
     },
+    home_penalty_score: {
+        type: String,
+        default: null
+    },
+    away_penalty_score: {
+        type: String,
+        default: null
+    },
+    winner_team_id: {
+        type: String,
+        default: null
+    },
     home_scorers: {
         type: String,
         default: "null"

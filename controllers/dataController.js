@@ -5,6 +5,7 @@ const authMiddleware = require('../middleware/auth');
 const Group = require('../models/group');
 const Team = require('../models/team');
 const Game = require('../models/game');
+const { advanceRoundOf32Match } = require('../services/knockoutBracket');
 
 const AcessCodeDevEnv = process.env.ACESSCODEDEV
 
@@ -148,8 +149,11 @@ router.put('/game/:idGame', async(req,res) => {
             return res.status(401).send({error: 'Unauthorized to edit game'});
         };
         const game = await Game.findByIdAndUpdate(req.params.idGame, {...req.body}, {new:true});
+        const advancement = game
+            ? await advanceRoundOf32Match(Game.collection, game.toObject())
+            : { advanced: false, reason: 'game_not_found' };
         
-        return res.send({game});
+        return res.send({game, advancement});
     }catch(err){
         return res.status(400).send({
             error: 'Error editing game'
