@@ -244,9 +244,16 @@ module.exports = (app) => {
             
             console.log('📥 IPN Received:', JSON.stringify(payload, null, 2));
             
-            // Verify signature
-            if (signature && !verifyIpnSignature(payload, signature)) {
-                console.error('❌ Invalid IPN signature');
+            // Verify signature — NOWPayments always sends x-nowpayments-sig on real
+            // IPN callbacks. Reject any request that is missing the header or whose
+            // HMAC does not match, otherwise an unauthenticated attacker can forge
+            // payment confirmations by simply omitting the header.
+            if (!NOWPAYMENTS_IPN_SECRET) {
+                console.error('❌ IPN rejected: NOWPAYMENTS_IPN_SECRET is not configured');
+                return res.status(500).json({ error: 'IPN verification not configured' });
+            }
+            if (!signature || !verifyIpnSignature(payload, signature)) {
+                console.error('❌ Invalid or missing IPN signature');
                 return res.status(400).json({ error: 'Invalid signature' });
             }
             
