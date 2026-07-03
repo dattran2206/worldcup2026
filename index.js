@@ -263,4 +263,12 @@ app.use((error, req, res, next) => {
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
+
+    // Start in-process live score updater (replaces the need for separate auto-updater.js worker)
+    try {
+        const { startLiveUpdater } = require('./services/liveUpdater');
+        startLiveUpdater();
+    } catch (err) {
+        console.error('❌ Failed to start live updater:', err.message);
+    }
 });
