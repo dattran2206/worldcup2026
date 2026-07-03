@@ -2,10 +2,7 @@
  * local-update.js
  * Quét tỷ số trực tiếp và lịch sử từ Varzesh3 và lưu thẳng vào MongoDB Atlas của bạn.
  * Chạy lệnh này trên máy tính cá nhân để tránh việc các dải IP Cloud của Render bị phía Iran chặn.
- * 
- * Cách chạy:
- *   node scripts/local-update.js "mongodb+srv://dattt:dattt%402206@worldcup2026.ocnwzre.mongodb.net/?appName=worldcup2026"
- */
+*/
 const { MongoClient } = require("mongodb");
 const https = require("https");
 
@@ -109,7 +106,7 @@ async function main() {
 
     console.log("🔄 Bắt đầu tải dữ liệu kết quả từ Varzesh3...");
     let updatedCount = 0;
-    
+
     // Quét toàn bộ kết quả từ ngày 11/06 (offset -25) đến hôm nay (offset 0)
     for (let offset = 0; offset >= -25; offset--) {
       try {
@@ -175,7 +172,7 @@ async function main() {
                   { _id: match._id },
                   { $set: updateData }
                 );
-                
+
                 if (updateResult.modifiedCount > 0) {
                   updatedCount++;
                   console.log(`[Cập nhật] ${match.home_team_name_en} ${homeScore} - ${awayScore} ${match.away_team_name_en}`);
