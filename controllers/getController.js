@@ -12,8 +12,8 @@ let teamsCache = null;
 let teamsCacheTime = 0;
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
-// Cache for games (live data - refreshed every 30s)
-const GAME_CACHE_TTL = 30 * 1000; // 30 seconds
+// Cache for games (live data - refreshed every 10s for near-realtime updates)
+const GAME_CACHE_TTL = 10 * 1000; // 10 seconds (was 30s - too slow for live matches)
 const gameCache = new Map(); // key: gameId → { data, time }
 let allGamesCache = null;
 let allGamesCacheTime = 0;

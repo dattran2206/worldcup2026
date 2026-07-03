@@ -56,7 +56,7 @@ function loadEnvConfig() {
     PUBLIC_RATE_LIMIT_MAX: parseInt(process.env.PUBLIC_RATE_LIMIT_MAX) || 120,
 
     // In-memory response cache for public GET endpoints
-    PUBLIC_CACHE_TTL: parseInt(process.env.PUBLIC_CACHE_TTL || process.env.PUBLIC_CACHE_TTL_MS) || 30000,
+    PUBLIC_CACHE_TTL: parseInt(process.env.PUBLIC_CACHE_TTL || process.env.PUBLIC_CACHE_TTL_MS) || 10000,
     PUBLIC_CACHE_MAX_ITEMS: parseInt(process.env.PUBLIC_CACHE_MAX_ITEMS) || 1000,
 
     // CORS
