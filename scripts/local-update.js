@@ -2,9 +2,6 @@
  * local-update.js
  * Quét toàn bộ dữ liệu trận đấu và tỷ số từ API gốc (worldcup26.ir) và đồng bộ thẳng vào MongoDB Atlas của bạn.
  * Đồng bộ toàn bộ 104 trận đấu bao gồm tỷ số, cầu thủ ghi bàn, loạt sút luân lưu và các đội lọt vào vòng trong.
- * 
- * Cách chạy:
- *   node scripts/local-update.js "mongodb+srv://dattt:dattt_2206@worldcup2026.ocnwzre.mongodb.net/?appName=worldcup2026"
  */
 const { MongoClient } = require("mongodb");
 const https = require("https");
