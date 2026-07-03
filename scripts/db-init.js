@@ -1,18 +1,20 @@
 /**
  * db-init.js
  * Chạy khi khởi động Render để khởi tạo DB và tự động cập nhật kết quả các trận đấu đã qua.
- * Tự chứa (Self-contained) bản đồ dịch ngôn ngữ để không bị crash bởi file JSON gốc bị lỗi.
+ * Đảm bảo tương thích 100% với Node.js cũ bằng cách sử dụng module 'https' gốc.
  */
 require("dotenv").config();
 const { MongoClient } = require("mongodb");
 const { execSync } = require("child_process");
 const fs = require("fs");
 const path = require("path");
+const https = require("https");
 
-const MONGO_URI = process.env.MONGODB_URL || "mongodb://127.0.0.1:27017/worldcup2026";
+// Đọc cả 2 biến MONGO_URI và MONGODB_URL
+const MONGO_URI = process.env.MONGO_URI || process.env.MONGODB_URL || "mongodb://127.0.0.1:27017/worldcup2026";
 const MATCH_COLLECTION = "games";
 
-// Bản đồ dịch tên đội tuyển từ tiếng Ba Tư sang tiếng Anh (Được nhúng trực tiếp tránh lỗi file JSON gốc bị hỏng)
+// Bản đồ dịch tên đội tuyển từ tiếng Ba Tư sang tiếng Anh
 const TEAM_MAP = {
     "الجزایر": "Algeria",
     "آرژانتین": "Argentina",
@@ -57,6 +59,7 @@ const TEAM_MAP = {
     "عربستان سعودی": "Saudi Arabia",
     "اسکاتلند": "Scotland",
     "سنگال": "Senegal",
+    "آfریقای جنوبی": "South Africa",
     "آفریقای جنوبی": "South Africa",
     "کره جنوبی": "South Korea",
     "اسپانیا": "Spain",
@@ -78,6 +81,29 @@ function runCmd(cmd) {
     } catch (err) {
         console.error(`Command failed: ${cmd}`, err.message);
     }
+}
+
+// Hàm fetch dữ liệu dùng module 'https' thuần, tương thích mọi phiên bản Node
+function httpGetJSON(url) {
+    return new Promise((resolve, reject) => {
+        https.get(url, { timeout: 8000 }, (res) => {
+            if (res.statusCode !== 200) {
+                reject(new Error(`HTTP Status Code: ${res.statusCode}`));
+                return;
+            }
+            let rawData = "";
+            res.on("data", (chunk) => { rawData += chunk; });
+            res.on("end", () => {
+                try {
+                    resolve(JSON.parse(rawData));
+                } catch (e) {
+                    reject(e);
+                }
+            });
+        }).on("error", (err) => {
+            reject(err);
+        });
+    });
 }
 
 async function main() {
@@ -115,10 +141,7 @@ async function main() {
                     : `https://web-api.varzesh3.com/v2.0/livescore/${offset}`;
 
                 console.log(`Fetching offset ${offset}...`);
-                const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
-                if (!res.ok) continue;
-
-                const data = await res.json();
+                const data = await httpGetJSON(url);
                 if (!Array.isArray(data)) continue;
 
                 for (const league of data) {
@@ -191,7 +214,6 @@ async function main() {
         console.error("Initialization warning:", err);
     } finally {
         await client.close();
-        // Đảm bảo script luôn thoát với code 0 để Render không từ chối khởi chạy Web Server
         process.exit(0);
     }
 }
