@@ -112,8 +112,7 @@ async function syncMatches(v3Matches, db) {
 
     const match = await matches.findOne({
       home_team_id: homeTeamId,
-      away_team_id: awayTeamId,
-      finished: { $nin: ['TRUE', true] }
+      away_team_id: awayTeamId
     }, { sort: { date: -1 } });
     if (!match) continue;
 
@@ -127,6 +126,15 @@ async function syncMatches(v3Matches, db) {
       newData.winner_team_id = m.winner === 0 ? homeTeamId : awayTeamId;
     }
 
+    if (m.penalties) {
+      if (m.penalties.host !== undefined && m.penalties.host !== null) {
+        newData.home_penalty_score = String(m.penalties.host);
+      }
+      if (m.penalties.guest !== undefined && m.penalties.guest !== null) {
+        newData.away_penalty_score = String(m.penalties.guest);
+      }
+    }
+
     if (m.isLive || m.status === 7) {
       const scorers = await fetchEvents(m.id);
       if (scorers) {
@@ -137,7 +145,9 @@ async function syncMatches(v3Matches, db) {
 
     if (match.home_score !== newData.home_score || match.away_score !== newData.away_score ||
         match.time_elapsed !== newData.time_elapsed || match.finished !== newData.finished ||
-        match.home_scorers !== newData.home_scorers) {
+        match.home_scorers !== newData.home_scorers ||
+        (newData.home_penalty_score !== undefined && match.home_penalty_score !== newData.home_penalty_score) ||
+        (newData.away_penalty_score !== undefined && match.away_penalty_score !== newData.away_penalty_score)) {
       await matches.updateOne({ _id: match._id }, { $set: newData });
       updated++;
     }
