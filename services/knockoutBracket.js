@@ -41,14 +41,17 @@ function getWinnerTeamId(match) {
     return null;
 }
 
+const KO_TYPES = new Set(["r32", "r16", "qf", "sf", "third", "final"]);
+
 function isRoundOf32(match) {
-    return String(match?.type || "").toLowerCase() === "r32" ||
-        String(match?.group || "").toUpperCase() === "R32";
+    const type = String(match?.type || "").toLowerCase();
+    const group = String(match?.group || "").toLowerCase();
+    return KO_TYPES.has(type) || KO_TYPES.has(group);
 }
 
 async function advanceRoundOf32Match(matches, match) {
     if (!isRoundOf32(match) || !isFinished(match)) {
-        return { advanced: false, reason: "match_not_finished_r32" };
+        return { advanced: false, reason: "match_not_finished_knockout" };
     }
 
     const winnerTeamId = getWinnerTeamId(match);
@@ -56,42 +59,77 @@ async function advanceRoundOf32Match(matches, match) {
         return { advanced: false, reason: "winner_not_determined" };
     }
 
+    // 1. Advance the winner
     const sourceLabel = `Winner Match ${match.id}`;
     const nextMatch = await matches.findOne({
-        type: "r16",
         $or: [
             { home_team_label: sourceLabel },
             { away_team_label: sourceLabel }
         ]
     });
 
-    if (!nextMatch) {
-        return { advanced: false, reason: "next_match_not_found", sourceLabel };
+    let advancedWinner = false;
+    let nextMatchId = null;
+    let field = null;
+
+    if (nextMatch && (nextMatch.home_team_label === sourceLabel || nextMatch.away_team_label === sourceLabel)) {
+        field = nextMatch.home_team_label === sourceLabel ? "home_team_id" : "away_team_id";
+        if (String(nextMatch[field]) !== String(winnerTeamId)) {
+            await matches.updateOne(
+                { _id: nextMatch._id },
+                { $set: { [field]: winnerTeamId } }
+            );
+            advancedWinner = true;
+            nextMatchId = nextMatch.id;
+        }
     }
 
-    const field = nextMatch.home_team_label === sourceLabel
-        ? "home_team_id"
-        : "away_team_id";
+    // 2. Advance the loser (for the third place match)
+    let advancedLoser = false;
+    let loserMatchId = null;
+    let loserField = null;
 
-    if (String(nextMatch[field]) === winnerTeamId) {
+    const homeTeamId = validTeamId(match.home_team_id);
+    const awayTeamId = validTeamId(match.away_team_id);
+    if (homeTeamId && awayTeamId) {
+        const loserTeamId = winnerTeamId === homeTeamId ? awayTeamId : homeTeamId;
+        const loserLabel = `Loser Match ${match.id}`;
+        const loserMatch = await matches.findOne({
+            $or: [
+                { home_team_label: loserLabel },
+                { away_team_label: loserLabel }
+            ]
+        });
+
+        if (loserMatch && (loserMatch.home_team_label === loserLabel || loserMatch.away_team_label === loserLabel)) {
+            loserField = loserMatch.home_team_label === loserLabel ? "home_team_id" : "away_team_id";
+            if (String(loserMatch[loserField]) !== String(loserTeamId)) {
+                await matches.updateOne(
+                    { _id: loserMatch._id },
+                    { $set: { [loserField]: loserTeamId } }
+                );
+                advancedLoser = true;
+                loserMatchId = loserMatch.id;
+            }
+        }
+    }
+
+    if (advancedWinner || advancedLoser) {
         return {
-            advanced: false,
-            reason: "already_advanced",
+            advanced: true,
             winnerTeamId,
-            nextMatchId: nextMatch.id,
-            field
+            nextMatchId,
+            field,
+            advancedLoser,
+            loserMatchId
         };
     }
 
-    await matches.updateOne(
-        { _id: nextMatch._id },
-        { $set: { [field]: winnerTeamId } }
-    );
-
     return {
-        advanced: true,
+        advanced: false,
+        reason: "already_advanced",
         winnerTeamId,
-        nextMatchId: nextMatch.id,
+        nextMatchId: nextMatch?.id,
         field
     };
 }
@@ -100,7 +138,10 @@ async function advanceRoundOf32Winners(db, collectionName = "games") {
     const matches = db.collection(collectionName);
     const finishedMatches = await matches.find({
         $and: [
-            { $or: [{ type: "r32" }, { group: "R32" }] },
+            { $or: [
+                { type: { $in: ["r32", "r16", "qf", "sf", "third", "final"] } },
+                { group: { $in: ["R32", "R16", "QF", "SF", "THIRD", "FINAL"] } }
+            ] },
             { $or: [
                 { finished: { $in: ["TRUE", "true", true, 1, "1", "finished", "FINISHED"] } },
                 { time_elapsed: "finished" }
